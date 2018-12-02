@@ -74,15 +74,15 @@ Asynchronous Function
 
 **Parameters**
 
-* `condition` <type:String>
-* `reference` <type:any>
-* `message` <type:String>
-* `by` <type:any>
-* `code` <type:Number>
+* `condition` *type:String*
+* `reference` *type:any*
+* `message` *type:String*
+* `by` *type:any*
+* `code` *type:Number*
 
 **Returns**
 
-<Promise>, if `resolve` the conditions returns `false` (*because of no error*), if `reject` the condition returns `Error`
+*Promise*, if `resolve` the conditions returns `false` (*because of no error*), if `reject` the condition returns `Error`
 
 **Usage**
 
