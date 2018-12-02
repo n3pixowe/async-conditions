@@ -26,9 +26,9 @@ Add your checks one by one to your check list with `Validator.checkCondition(<co
 
 ```javascript
 let myObject = [10, 11, 12];
-checkList.push(Validator.checkCondition("typeof(reference) ===  \"object\" && reference instanceof Array", myObject, "The object is not an array!", myObject, 0x1));
+checkList.push(Validator.checkCondition("typeof(reference) ===  'object' && reference instanceof Array", myObject, "The object is not an array!", myObject, 0x1));
 checkList.push(Validator.checkCondition("reference.length > 0", myObject, "This array is empty!", myObject, 0x2));
-checkList.push(Validator.checkCondition("reference[0] === 10", myObject, "This array\'s first element is not 10!", myObject[0], 0x3));
+checkList.push(Validator.checkCondition("reference[0] === 10", myObject, "This array's first element is not 10!", myObject[0], 0x3));
 ```
 
 **NOTE:** In the above code, we used `"reference.length > 0"` as a String. Here, `reference` is pointing to our `<reference object>` parameter.
@@ -89,10 +89,10 @@ Asynchronous Function
 
 ```javascript
 let myString = "Hello, World!";
-AsyncValidator.checkCondition('reference.includes("Hello")', myString, "The string doesn't includes \"Hello\"!", myString, 0x90)
+AsyncValidator.checkCondition('reference.includes("Hello")', myString, "The string doesn't includes 'Hello'!", myString, 0x90)
     .then(function(failed) {
         if(!failed) {
-            console.log("The string includes \"Hello\".");
+            console.log("The string includes 'Hello'.");
         }
     })
     .catch(function(error) {
