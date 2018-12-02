@@ -3,9 +3,25 @@
   "version": "0.0.1",
   "description": "Asynchronous Conditions is for parallel check multiple datas with multiple conditions.",
   "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n3pixowe/async-conditions.git"
+  },
+  "keywords": [
+    "async",
+    "conditions",
+    "project"
+  ],
   "author": "Muhammed Çağlar TUFAN",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/n3pixowe/async-conditions/issues"
+  },
+  "homepage": "https://github.com/n3pixowe/async-conditions#readme"
 }
