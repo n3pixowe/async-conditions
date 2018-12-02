@@ -1,6 +1,6 @@
 {
   "name": "async-conditions",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Asynchronous Conditions is for parallel check multiple datas with multiple conditions.",
   "main": "index.js",
   "directories": {
