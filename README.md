@@ -68,6 +68,7 @@ All the conditions are checked paralelly. If there was an failed check while che
 ### AsyncValidator.checkCondition(condition[, reference], message[, by, code])
 
 Added in: 0.0.1
+
 **Type**
 
 Asynchronous Function
