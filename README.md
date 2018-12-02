@@ -59,7 +59,7 @@ All the conditions are checked paralelly. If there was an failed check while che
 
 * async-validator
   * Class: AsyncValidator
-    * [AsyncValidator.checkCondition(condition[, reference], message[, by, code])](https://github.com/n3pixowe/async-conditions#documentation)
+    * [AsyncValidator.checkCondition(condition[, reference], message[, by, code])](https://github.com/n3pixowe/async-conditions#asyncvalidatorcheckconditioncondition-reference-message-by-code)
     * [AsyncValidator.generateErrorObject(message[, by, code])](https://github.com/n3pixowe/async-conditions#documentation)
     * [AsyncValidator.validateResults(checks)](https://github.com/n3pixowe/async-conditions#documentation)
 
@@ -76,14 +76,14 @@ Asynchronous Function
 **Parameters**
 
 * `condition` *type:String*
-* `reference` *type:any*
+* `reference` *type:any*, *default:null*
 * `message` *type:String*
-* `by` *type:any*
-* `code` *type:Number*
+* `by` *type:any*, *default:null*
+* `code` *type:Number*, *default:-1*
 
 **Returns**
 
-*Promise*, if `resolve` the conditions returns `false` (*because of no error*), if `reject` the condition returns `Error`
+*Promise*, if `resolve` the conditions returns `false` (*because of no error*), if `reject` the condition returns `Error` object
 
 **Usage**
 
@@ -126,3 +126,41 @@ AsyncValidator.checkCondition("5 < 3", null, "Five is not smaller than three")
  *     at Function.Module._load (<location>:<line>:<column>) by: null, code: -1 }
  */
 ```
+
+### AsyncValidator.generateErrorObject(message[, by, code])
+
+Added in: 0.0.1
+
+**Type**
+
+Function
+
+**Parameters**
+
+* `message` *type:String*
+* `by` *type:any*, *default:null*
+* `code` *type:Number*, *default:-1*
+
+**Returns**
+
+*Error Object* with properties `by` and `code`
+
+**Usage**
+
+```javascript
+let myCustomErrorObject = AsyncValidator.generateErrorObject("The array doesn't have three elements.", [1, 2], 390);
+console.log(myCustomErrorObject);
+
+/*
+ * Output:
+ * { Error: The array doesn't have three elements.
+ *     at Function.generateErrorObject (<location>:<line>:<column>)
+ *     at Promise (<location>)
+ *     .
+ *     .
+ *     .
+ *     at Function.Module._load (<location>:<line>:<column>) by: [1, 2], code: 390 }
+ */
+```
+
+Creates a custom error.
