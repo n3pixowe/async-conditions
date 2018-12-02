@@ -55,7 +55,7 @@ If, any of our checks did failed, the `.catch()` call of `Validator.checkConditi
 
 All the conditions are checked paralelly. If there was an failed check while checking all conditions, it will catched fastly before all the conditions give result. So, this is awesome to use while you are using synchronous `if...else if...else` or `switch case` expressions. If your checks has going to use a little bit time, you need to use asynchronous calls!
 
-# Documentation
+## Documentation
 
 * async-validator
   * Class: AsyncValidator
@@ -63,9 +63,9 @@ All the conditions are checked paralelly. If there was an failed check while che
     * [AsyncValidator.generateErrorObject(message[, by, code])](https://github.com/n3pixowe/async-conditions#asyncvalidatorgenerateerrorobjectmessage-by-code)
     * [AsyncValidator.validateResults(checks)](https://github.com/n3pixowe/async-conditions#asyncvalidatorvalidateresultschecks)
 
-## Class: AsyncValidator
+### Class: AsyncValidator
 
-### AsyncValidator.checkCondition(condition[, reference], message[, by, code])
+#### AsyncValidator.checkCondition(condition[, reference], message[, by, code])
 
 Added in: 0.0.1
 
@@ -127,7 +127,7 @@ AsyncValidator.checkCondition("5 < 3", null, "Five is not smaller than three")
  */
 ```
 
-### AsyncValidator.generateErrorObject(message[, by, code])
+#### AsyncValidator.generateErrorObject(message[, by, code])
 
 Added in: 0.0.1
 
@@ -165,7 +165,7 @@ console.log(myCustomErrorObject);
 
 Creates a custom error.
 
-### AsyncValidator.validateResults(checks)
+#### AsyncValidator.validateResults(checks)
 
 Added in: 0.0.1
 
@@ -190,20 +190,22 @@ let myObject = {
     age: 44
 };
 let checkList = [
-    AsyncValidator.checkCondition("", [1, 2], 390);
+    AsyncValidator.checkCondition("typeof(reference.name) === 'string' && typeof(reference.lastname) === 'string' && typeof(reference.age) === 'number'", myObject, "name, lastname and age properties are not valid.", myObject, 0x00)
+    AsyncValidator.checkCondition("reference.age => 0", myObject, "age property is not valid.", myObject.age, 0x01)
 ]
-console.log(myCustomErrorObject);
+AsyncValidator.validateChecks(checkList)
+    .then(function(success) {
+        if(success) {
+            console.log("Conditions are fit!");
+        }
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
 
-/*
- * Output:
- * { Error: The array doesn't have three elements.
- *     at Function.generateErrorObject (<location>:<line>:<column>)
- *     at Promise (<location>)
- *     .
- *     .
- *     .
- *     at Function.Module._load (<location>:<line>:<column>) by: [1, 2], code: 390 }
- */
+// Output: Conditions are fit!
 ```
 
-Creates a custom error.
+Checks all `AsyncValidator.checkCondition()` in an array asynchronously. All checks starts at the same time, if any of conditions return `Error` object, the process fails and shows the `Error` object.
+
+## **If you got any problems, tell us!**
