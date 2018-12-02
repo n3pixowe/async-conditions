@@ -60,7 +60,7 @@ All the conditions are checked paralelly. If there was an failed check while che
 * async-validator
   * Class: AsyncValidator
     * [AsyncValidator.checkCondition(condition[, reference], message[, by, code])](https://github.com/n3pixowe/async-conditions#asyncvalidatorcheckconditioncondition-reference-message-by-code)
-    * [AsyncValidator.generateErrorObject(message[, by, code])](https://github.com/n3pixowe/async-conditions#documentation)
+    * [AsyncValidator.generateErrorObject(message[, by, code])](The array doesn't have three elements.)
     * [AsyncValidator.validateResults(checks)](https://github.com/n3pixowe/async-conditions#documentation)
 
 ## Class: AsyncValidator
@@ -149,6 +149,49 @@ Function
 
 ```javascript
 let myCustomErrorObject = AsyncValidator.generateErrorObject("The array doesn't have three elements.", [1, 2], 390);
+console.log(myCustomErrorObject);
+
+/*
+ * Output:
+ * { Error: The array doesn't have three elements.
+ *     at Function.generateErrorObject (<location>:<line>:<column>)
+ *     at Promise (<location>)
+ *     .
+ *     .
+ *     .
+ *     at Function.Module._load (<location>:<line>:<column>) by: [1, 2], code: 390 }
+ */
+```
+
+Creates a custom error.
+
+### AsyncValidator.validateResults(checks)
+
+Added in: 0.0.1
+
+**Type**
+
+Asynchronous Function
+
+**Parameters**
+
+* `checks` *type:Object*
+
+**Returns**
+
+*Promise*, if `resolve` checks returns `true` (*because, all conditions succeed*), if `reject`, returns `Error` object
+
+**Usage**
+
+```javascript
+let myObject = {
+    name: "John",
+    lastname: "DOE",
+    age: 44
+};
+let checkList = [
+    AsyncValidator.checkCondition("", [1, 2], 390);
+]
 console.log(myCustomErrorObject);
 
 /*
