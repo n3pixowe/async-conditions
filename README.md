@@ -55,13 +55,13 @@ If, any of our checks did failed, the `.catch()` call of `Validator.checkConditi
 
 All the conditions are checked paralelly. If there was an failed check while checking all conditions, it will catched fastly before all the conditions give result. So, this is awesome to use while you are using synchronous `if...else if...else` or `switch case` expressions. If your checks has going to use a little bit time, you need to use asynchronous calls!
 
-### Documentation
+# Documentation
 
 * async-validator
   * Class: AsyncValidator
     * [AsyncValidator.checkCondition(condition[, reference], message[, by, code])](https://github.com/n3pixowe/async-conditions#asyncvalidatorcheckconditioncondition-reference-message-by-code)
-    * [AsyncValidator.generateErrorObject(message[, by, code])](The array doesn't have three elements.)
-    * [AsyncValidator.validateResults(checks)](https://github.com/n3pixowe/async-conditions#documentation)
+    * [AsyncValidator.generateErrorObject(message[, by, code])](https://github.com/n3pixowe/async-conditions#asyncvalidatorgenerateerrorobjectmessage-by-code)
+    * [AsyncValidator.validateResults(checks)](https://github.com/n3pixowe/async-conditions#asyncvalidatorvalidateresultschecks)
 
 ## Class: AsyncValidator
 
