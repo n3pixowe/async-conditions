@@ -5,7 +5,7 @@ class AsyncValidator {
 
     static generateErrorObject(message, by=null, code=-1) {
         let error = new Error(message);
-        error.by = by;;
+        error.by = by;
         error.code = code;
         return error;
     }
