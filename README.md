@@ -54,3 +54,11 @@ Validator.checkConditions(checkList)
 If, any of our checks did failed, the `.catch()` call of `Validator.checkConditions()` will catch the error throwing condition and `console.log()` the error.
 
 All the conditions are checked paralelly. If there was an failed check while checking all conditions, it will catched fastly before all the conditions give result. So, this is awesome to use while you are using synchronous `if...else if...else` or `switch case` expressions. If your checks has going to use a little bit time, you need to use asynchronous calls!
+
+### Documentation
+
+* async-validator
+  * Class: AsyncValidator
+    * AsyncValidator.checkCondition(condition[, reference], message[, by, code])
+    * AsyncValidator.generateErrorObject(message[, by, code])
+    * AsyncValidator.validateResults(checks)
