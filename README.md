@@ -104,11 +104,11 @@ AsyncValidator.checkCondition('reference.includes("Hello")', myString, "The stri
 
 If, the condition did fail,
 
-```
+```javascript
 AsyncValidator.checkCondition("5 < 3", null, "Five is not smaller than three")
     .then(function(failed) {
         if(!failed) {
-            console.log("Five is smaller than three.);
+            console.log("Five is smaller than three.");
         }
     })
     .catch(function(error) {
