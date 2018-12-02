@@ -26,12 +26,12 @@ Add your checks one by one to your check list with `Validator.checkCondition(<co
 
 ```javascript
 let myObject = [10, 11, 12];
-checkList.push(Validator.checkCondition('typeof(reference) ===  \'object\' && reference instanceof Array', myObject, 'The object is not an array!', myObject, 0x1));
-checkList.push(Validator.checkCondition('reference.length > 0', myObject, 'This array is empty!', myObject, 0x2));
-checkList.push(Validator.checkCondition('reference[0] === 10', myObject, 'This array\'s first element is not 10!', myObject[0], 0x3));
+checkList.push(Validator.checkCondition("typeof(reference) ===  \"object\" && reference instanceof Array", myObject, "The object is not an array!", myObject, 0x1));
+checkList.push(Validator.checkCondition("reference.length > 0", myObject, "This array is empty!", myObject, 0x2));
+checkList.push(Validator.checkCondition("reference[0] === 10", myObject, "This array\'s first element is not 10!", myObject[0], 0x3));
 ```
 
-**NOTE:** In the above code, we used `'reference.length > 0'` as a String. Here, `reference` is pointing to our `<reference object>` parameter.
+**NOTE:** In the above code, we used `"reference.length > 0"` as a String. Here, `reference` is pointing to our `<reference object>` parameter.
 
 **NOTE:** In the third `checkList.push(...)` call, we did used `myObject[0]` as `<by>` parameter, because the error is throwed by this data.
 
@@ -41,7 +41,7 @@ And the end! We will now use `Validator.checkConditions(<check list>)` asynchron
 Validator.checkConditions(checkList)
     .then(function(result) {
         if(result) {
-            console.log('All checks succeeded...');
+            console.log("All checks succeeded...");
         }
     })
     .catch(function(error) {
@@ -59,6 +59,69 @@ All the conditions are checked paralelly. If there was an failed check while che
 
 * async-validator
   * Class: AsyncValidator
-    * AsyncValidator.checkCondition(condition[, reference], message[, by, code])
-    * AsyncValidator.generateErrorObject(message[, by, code])
-    * AsyncValidator.validateResults(checks)
+    * [AsyncValidator.checkCondition(condition[, reference], message[, by, code])](https://github.com/n3pixowe/async-conditions#documentation)
+    * [AsyncValidator.generateErrorObject(message[, by, code])](https://github.com/n3pixowe/async-conditions#documentation)
+    * [AsyncValidator.validateResults(checks)](https://github.com/n3pixowe/async-conditions#documentation)
+
+## Class: AsyncValidator
+
+### AsyncValidator.checkCondition(condition[, reference], message[, by, code])
+
+Added in: 0.0.1
+**Type**
+
+Asynchronous Function
+
+**Parameters**
+
+* `condition` <type:String>
+* `reference` <type:any>
+* `message` <type:String>
+* `by` <type:any>
+* `code` <type:Number>
+
+**Returns**
+
+<Promise>, if `resolve` the conditions returns `false` (*because of no error*), if `reject` the condition returns `Error`
+
+**Usage**
+
+```javascript
+let myString = "Hello, World!";
+AsyncValidator.checkCondition('reference.includes("Hello")', myString, "The string doesn't includes \"Hello\"!", myString, 0x90)
+    .then(function(failed) {
+        if(!failed) {
+            console.log("The string includes \"Hello\".");
+        }
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+
+// Output: The string includes "Hello"
+```
+
+If, the condition did fail,
+
+```
+AsyncValidator.checkCondition("5 < 3", null, "Five is not smaller than three")
+    .then(function(failed) {
+        if(!failed) {
+            console.log("Five is smaller than three.);
+        }
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+
+/*
+ * Output:
+ * { Error: Five is not smaller than three!
+ *     at Function.generateErrorObject (<location>:<line>:<column>)
+ *     at Promise (<location>)
+ *     .
+ *     .
+ *     .
+ *     at Function.Module._load (<location>:<line>:<column>) by: null, code: -1 }
+ */
+```
